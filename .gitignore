@@ -43,3 +43,38 @@ build_*
 # OpenClaw internal
 HEARTBEAT_STATUS_REPORT.md
 skills/elevenlabs-tts/elevenlabs_credentials.json
+
+# Old setup docs (keep or delete?)
+AIR_QUALITY_FEATURE.md
+AI_MASTERING_SETUP.md
+AMADEUS_SKILL.md
+CLONEVOICE_ANALYSIS.md
+GOOGLE_VISION_SETUP.md
+GHL_V2_ISSUE_REPORT.md
+HYPEUGC_ANALYSIS.md
+MORNING_BRIEFING_SETUP.md
+NEWS_SYSTEM_SETUP.md
+NOTION_SETUP_GUIDE.md
+NWO_API_DEBUG.md
+NWO_LOGO_UPDATE_GUIDE.md
+NWO_PUBLICATION_PACKAGE.md
+PHONEBOOK_GUIDE.md
+SMS_SKILL.md
+TNWO_ARCHITECTURE.md
+TNWO_DEPLOYMENT_PACKAGE.md
+TNWO_LUXURY_DEPLOYMENT_PACKAGE.md
+DEPLOY_*.sh
+PROJECTS.md
+
+# Build/temp artifacts
+*.tsx
+_*.mjs
+_*.py
+_*.sh
+whatsapp_*.py
+aws_*
+waha_qr*
+wireguard_qr*
+world_pins.png
+wthr_overlay.png
+*.html
