@@ -1,0 +1,45 @@
+# Secrets
+.vault/
+.env.gmail
+.env*
+*_key*
+*_secret*
+*.pem
+*.key
+credentials.json
+client_secret*.json
+
+# Temp / generated
+node_modules/
+/tmp/
+*.tar.gz
+*.zip
+_*.mjs
+_*.py
+_*.sh
+check*.js
+check*.mjs
+check*.cjs
+check*.py
+
+# Large / binary
+*.pdf
+#wx_*.png
+#wx_*.jpg
+
+# Agent generated debug files
+*.html
+*.json
+awin_*
+check_*
+aws_*
+add_*
+analyze_*
+build_*
+
+# Apple
+.DS_Store
+
+# OpenClaw internal
+HEARTBEAT_STATUS_REPORT.md
+skills/elevenlabs-tts/elevenlabs_credentials.json
