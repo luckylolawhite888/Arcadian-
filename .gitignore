@@ -78,3 +78,8 @@ wireguard_qr*
 world_pins.png
 wthr_overlay.png
 *.html
+
+# These generate during everyday work and shouldn't be backed up
+__pycache__/
+*.pyc
+bin/gog
