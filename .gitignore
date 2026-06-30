@@ -83,3 +83,4 @@ wthr_overlay.png
 __pycache__/
 *.pyc
 bin/gog
+data/lola_memory.db
