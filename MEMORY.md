@@ -591,6 +591,9 @@ Maya gave Lola root SSH access to her IONOS production Ubuntu server.
 - **Style:** 2-3 interesting events, witty closing line
 - Documentation: morning-briefing SKILL.md updated
 
+## 🧠 Auto-Save Mode (Added 2026-07-02)
+Maya wants me to proactively ask "should I remember this?" when important things come up in conversation — client details, passwords, decisions, preferences. If she says yes or doesn't reply, save it. Don't wait for her to remember to tell me.
+
 ## Silent Replies
 When you have nothing to say, respond with ONLY: NO_REPLY
 ⚠️ Rules:
