@@ -6,13 +6,30 @@ This file stores significant events, learnings, and context over time.
 
 **Rule (set 2026-06-27):** Never use Maya's number (07542666646 / +447542666646) for any purpose without explicit permission. No sending messages, no referencing, no API calls — nothing. This is a hard boundary.
 
+## 🔴 Scarlett VPS Root Access
+- **Host:** 212.227.39.41
+- **Root password:** WjoDZcB0Ryt47E
+- **Web root:** /var/www/html/ (dashboard at index.html, ~154KB v2 single-file app)
+- **API dir:** /var/www/api/ (server.v2.js managed by systemd: scarlett-api.service)
+- **OpenClaw:** Installed on server, workspace /root/.openclaw/workspace/
+
 ## Active Projects
 
-### 🌿 GPM (Green Planet Makers) — Demo Complete
-- File: `projects/gpm.md`
-- Maya is tech operator (not investor)
-- Demo live at gpm-demo.thenewworldorder.io (sign-up + /admin/)
-- Darren Pelling: engaged, interested, waiting on show & tell
+### 🌿 GPM / Darren Pelling (Scarlett) — Live
+- **Client:** Darren Pelling → Mission Control CRM at scarlettpelling.com
+- **Scarlett:** AI sales assistant (Northern personality, warm, no corporate speak)
+- **Web:** scarlettpelling.com — login + v2 dashboard (orange theme, stats, chat)
+- **API:** port 3100 (node server), nginx proxy /api/* → 127.0.0.1:3100
+- **AI Backend:** OpenClaw gateway (port 18791) → DeepSeek via `openclaw agent --json`
+- **Chat Workspace:** `/root/.openclaw/workspace/default/` (Scarlett's SOUL.md + IDENTITY.md)
+- **Lead Engine:** Companies House search + Apollo enrichment, inserts to Supabase (25 leads as of 2026-07-03)
+- **Supabase:** https://ogkyhfdyssowaaloogsx.supabase.co
+- **Access code:** @DARREN2026
+- **SSL:** certbot, expires 2026-09-27
+- **WhatsApp:** +44 7988 965842 (WAHA), bridge v32 at /opt/sb.mjs
+- **News:** newsdata.io API key (pub_2f8aa390186e43cdbfa912a4cde68561) — briefing/news endpoints live
+- **Weather:** Open-Meteo (free, no key) — London forced, real humidity/UV/wind
+- **Git:** origin git@github.com:scarlettpelling5-alt/scarlettbackup.git, branch `master`, latest commit 28f6949 (v2.3 weather/news/briefing)
 
 ## 2026-04-27 — The Resurrection (Server Crash & Full Recovery)
 
@@ -590,6 +607,45 @@ Maya gave Lola root SSH access to her IONOS production Ubuntu server.
 - **Source:** web_search for "what happened today [date] history"
 - **Style:** 2-3 interesting events, witty closing line
 - Documentation: morning-briefing SKILL.md updated
+
+## 2026-07-03 — Scarlett Server Fixathon (Full Day)
+
+### 🔴 CRITICAL LESSON: Git Restore + Fix Churn
+When working on Scarlett's VPS (212.227.39.41), multiple fix layers pile up: `sed` on server.v2.js, Python scripts on index.html. A `git checkout -- server.v2.js` or `git checkout -- html/index.html` silently UNDOES ALL FIXES. This caused:
+- DELETE route re-nesting inside PATCH handler (3 times)
+- Task modal HTML disappearing (2 times)
+- Overlay CSS disappearing (2 times)
+- Column stripping fix disappearing
+
+**Fix:** After every git restore, re-run ALL fix scripts. Better yet: commit fixes to git after each working state.
+
+### What Broke & What Was Fixed
+1. **403 Forbidden** — `/var/www/index.html` (dashboard) was missing from web root `/var/www/html/`. The full dashboard was in `/var/www/` but nginx served `/var/www/html/`. Copied in place.
+2. **Broken Chat** — Server.v2.js was using a keyword matcher (if/else on "find", "lead", "weather", etc.) with fallback "I read you!" — no AI whatsoever. Patched to call `openclaw agent --json --agent main --local --session-key scarlett-chat` which routes through DeepSeek with Scarlett's personality.
+3. **Find Leads Broke** — Lead engine finds 20 Companies House leads but inserts fail because Supabase `leads` table has no `address` or `company_number` columns. The error was silently swallowed because `sbQuery` never checked `res.ok`. 
+   - Fixed: `sbQuery` now throws on non-OK responses
+   - Fixed: Removed invalid columns from insert payload
+   - Fixed: Lead handler checks if Supabase actually returned data
+   - Result: 25 leads in DB
+4. **API Persistence** — Created `/etc/systemd/system/scarlett-api.service` for auto-start on reboot
+
+### Server State (End of Session)
+- scarlettpelling.com — HTTP 200 ✅
+- Chat — AI responses via DeepSeek ✅
+- Find Leads — 25 leads in Supabase ✅
+- API — systemd service, port 3100 ✅
+
+### Git Hub — v2.2 Pushed
+- **Commit:** `0850f7b` — "Scarlett v2.2: tasks CRUD (create/edit/delete) + delete route fix"
+- **Branch:** master (not main)
+- **Remote:** github.com:scarlettpelling5-alt/scarlettbackup.git
+- **3 files:** server.v2.js, index.html, .gitignore (187 insertions, 19 deletions)
+- **Git restore trap:** After any git checkout, ALL task fixes (modal HTML, overlay CSS, column stripping, DELETE route) must be re-applied. Commit after each working state.
+
+### Pending
+- Inject Scarlett's proper identity/persona into OpenClaw main agent (Darren context)
+- Lead engine deduplication (same Companies House results across queries)
+- Dashboard auto-refresh after find leads completes
 
 ## 🧠 Auto-Save Mode (Added 2026-07-02)
 Maya wants me to proactively ask "should I remember this?" when important things come up in conversation — client details, passwords, decisions, preferences. If she says yes or doesn't reply, save it. Don't wait for her to remember to tell me.
