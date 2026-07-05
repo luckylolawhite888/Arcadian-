@@ -29,7 +29,7 @@ This file stores significant events, learnings, and context over time.
 - **WhatsApp:** +44 7988 965842 (WAHA), bridge v32 at /opt/sb.mjs
 - **News:** newsdata.io API key (pub_2f8aa390186e43cdbfa912a4cde68561) — briefing/news endpoints live
 - **Weather:** Open-Meteo (free, no key) — London forced, real humidity/UV/wind
-- **Git:** origin git@github.com:scarlettpelling5-alt/scarlettbackup.git, branch `master`, latest commit 28f6949 (v2.3 weather/news/briefing)
+- **Git:** origin git@github.com:scarlettpelling5-alt/scarlettbackup.git, branch `master`, latest commit 2a927f8 (v2.3 dedup/briefing scroll/auto-refresh — **NEEDS VERIFICATION**)
 
 ## 2026-04-27 — The Resurrection (Server Crash & Full Recovery)
 
