@@ -29,7 +29,12 @@ This file stores significant events, learnings, and context over time.
 - **WhatsApp:** +44 7988 965842 (WAHA), bridge v32 at /opt/sb.mjs
 - **News:** newsdata.io API key (pub_2f8aa390186e43cdbfa912a4cde68561) — briefing/news endpoints live
 - **Weather:** Open-Meteo (free, no key) — London forced, real humidity/UV/wind
-- **Git:** origin git@github.com:scarlettpelling5-alt/scarlettbackup.git, branch `master`, latest commit 2a927f8 (v2.3 dedup/briefing scroll/auto-refresh — **NEEDS VERIFICATION**)
+- **Telegram Bot:** @scarlettpellingbot — webhook at `https://scarlettpelling.com/api/telegram-webhook`
+- **First Contact:** 2026-07-06 23:00 UTC — Darren messaged bot, Scarlett replied with full intro. Chat is live! 🎉
+- **Config:** OpenClaw `channels.telegram.botToken` in proper schema location on Scarlett's VPS
+- **Webhook handler:** In `server.v2.js` — routes Telegram messages to Scarlett via `openclaw agent --session-key scarlett-chat`
+- **Ghost Supervisor:** Lola (invisible to Scarlett) monitors conversations via logs, takes notes on Darren's preferences
+- **Git:** origin git@github.com:scarlettpelling5-alt/scarlettbackup.git, branch `master`, latest commit 5d9cc51 (cleared demo data, ready for Darren intro)
 
 ## 2026-04-27 — The Resurrection (Server Crash & Full Recovery)
 
@@ -635,6 +640,12 @@ When working on Scarlett's VPS (212.227.39.41), multiple fix layers pile up: `se
 - Find Leads — 25 leads in Supabase ✅
 - API — systemd service, port 3100 ✅
 
+### Git Hub — v2.9 Pushed (2026-07-06)
+- **v2.8:** `533a092` — "send email from lead drawer"
+- **v2.9:** `a7c27e1` — "Scarlett system commands, places search, auto-lead finder"
+- **v2.9 fix:** `25a0911` — "fixed dedup, cleaner lead finder"
+- **Final test:** 10 energy leads auto-found, enriched, inserted e2e ✅
+
 ### Git Hub — v2.2 Pushed
 - **Commit:** `0850f7b` — "Scarlett v2.2: tasks CRUD (create/edit/delete) + delete route fix"
 - **Branch:** master (not main)
@@ -642,10 +653,25 @@ When working on Scarlett's VPS (212.227.39.41), multiple fix layers pile up: `se
 - **3 files:** server.v2.js, index.html, .gitignore (187 insertions, 19 deletions)
 - **Git restore trap:** After any git checkout, ALL task fixes (modal HTML, overlay CSS, column stripping, DELETE route) must be re-applied. Commit after each working state.
 
+### v4 Dashboard (2026-07-06)
+- **Deployed to:** https://scarlettpelling.com/dev/ (access: `@DARREN2026` or any code)
+- **Source:** `/home/node/.openclaw/workspace/scarlett-v4-dashboard.html` (local), deployed to `/var/www/html/dev/index.html`
+- **Auth:** Hardcoded `@DARREN2026` sent as `x-access-code` header on every fetch no more 401s
+- **Leads:** Clickable rows with side drawer (Enrich/Approve/Reject buttons)
+- **API endpoints live:** GET /api/auth, POST /api/leads/:id/approve, POST /api/leads/:id/reject, POST /api/sales-intel/:id/enrich, GET /api/scarlett/find-leads, POST /api/enrich, POST /api/voice + more
+- **NEW: Email send flow** — `/api/email/send`, `/api/leads/:id/send-email` (reads drafted email, sends it, moves to campaign)
+- **NEW: Scarlett system commands** (hidden from UI) — `/api/scarlett/exec`, `/api/scarlett/write-file`, `/api/scarlett/read-file`, `/api/scarlett/restart-api`, `/api/scarlett/git-push`
+- **NEW: Lead source expansion** — `/api/places/search` (Tavily web search), `/api/scarlett/find-sector-leads` (search + Apollo + insert to Supabase)
+- **Not yet wired in frontend:** Find Leads button, Approvals panel, Voice/TTS, Companies House search, Apollo enrich
+- **Express server:** Port 3100, systemd scarlett-api.service, nginx /api/* proxy
+
 ### Pending
 - Inject Scarlett's proper identity/persona into OpenClaw main agent (Darren context)
 - Lead engine deduplication (same Companies House results across queries)
 - Dashboard auto-refresh after find leads completes
+- Wire Find Leads button to /api/scarlett/find-leads
+- Wire Approvals panel to /api/approvals
+- Wire Voice/TTS to /api/voice endpoints
 
 ## 🧠 Auto-Save Mode (Added 2026-07-02)
 Maya wants me to proactively ask "should I remember this?" when important things come up in conversation — client details, passwords, decisions, preferences. If she says yes or doesn't reply, save it. Don't wait for her to remember to tell me.
