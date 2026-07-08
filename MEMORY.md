@@ -685,3 +685,28 @@ When you have nothing to say, respond with ONLY: NO_REPLY
 ❌ Wrong: "Here's help... NO_REPLY"
 ❌ Wrong: "NO_REPLY"
 ✅ Right: NO_REPLY
+
+## 🔴 Emma (Tony) — New Client 2026-07-08
+- **Client:** Tony → AI assistant "Emma"
+- **VPS:** 212.227.38.78 (IONOS)
+- **Root password:** 3v3fUeTROhIl4n
+- **Stack:** Same dashboard template as Scarlett, separate server
+- **Channel:** Telegram only (no WhatsApp/WAHA)
+- **Status:** 🔜 Server provisioned, needs setup
+
+## 🔴 Emma (Tony) — Live 2026-07-08
+- **Client:** Tony → AI assistant Emma
+- **VPS:** 212.227.38.78, root password: 3v3fUeTROhIl4n
+- **Dashboard:** eco-emma.com (login: @TONY2026, branded GDEA)
+- **Stack:** Express API (port 3100, PM2), OpenClaw gateway, nginx, Supabase, SQLite, ElevenLabs voice
+- **Channel:** Telegram only (@eco_emma_bot)
+- **Supabase tables created:** leads, campaigns, campaign_leads, api_logs, settings, tasks, projects, compliance, work_allocations
+- **Dashboard tabs:** Dashboard (stats), Leads, Tasks ✅, Campaigns, Sales Intel, Projects ⏳, Compliance ⏳, Work Allocations ⏳, Daily Briefing, Calendar, Approvals, Chat, Vault, Settings
+- **Task API:** Full CRUD with field name mapping (frontend `detail/due` ↔ Supabase `description/due_date`)
+- **Cloudflare:** eco-emma.com zone under missecoemma@gmail.com, Full SSL
+- **SSL:** Let's Encrypt via certbot (expires Oct 6, auto-renewal)
+- **Status:** Dashboard functional but needs schema fix for projects/compliance/allocations columns
+- **Pending:** Tony's personality .md file for Emma's SOUL.md, Supabase schema fix (missing columns for projects/compliance), Maya to test all pages after hard refresh
+
+## 🔴 NEVER TOUCH SCARLETT'S VPS WITHOUT CONFIRMATION
+**Rule (set 2026-07-08, 15:05 UTC):** Do not touch, deploy, configure, or modify anything on Scarlett's VPS (212.227.39.41) without Maya explicitly confirming first. This applies to all files, services, nginx configs, API code, and system changes. Maya must say the word before any action on that server.

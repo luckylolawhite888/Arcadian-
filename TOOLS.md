@@ -51,3 +51,10 @@ Skills are shared. Your setup is yours. Keeping them apart means you can update 
 ---
 
 Add whatever helps you do your job. This is your cheat sheet.
+
+### 🆕 Emma VPS (Tony) — Added 2026-07-08
+- **Host:** 212.227.38.78
+- **User:** root
+- **Password:** 3v3fUeTROhIl4n
+- **Purpose:** AI assistant "Emma" for client Tony
+- **Channel:** Telegram only
