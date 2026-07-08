@@ -673,6 +673,30 @@ When working on Scarlett's VPS (212.227.39.41), multiple fix layers pile up: `se
 - Wire Approvals panel to /api/approvals
 - Wire Voice/TTS to /api/voice endpoints
 
+## 🕸️ Graphify — Knowledge Graph for Lola, Scarlett & Emma (Added 2026-07-08)
+
+### All Three Instances Graphified
+- **Lola 🦊** — 24 nodes, 45 edges from SOUL.md, MEMORY.md, AGENTS.md, identity/config files
+- **Scarlett 💼** — 19 nodes, 33 edges from server.v2.js + index.html ($0.02)
+- **Emma 🌿** — 25 nodes, 41 edges from server.js + index.html ($0.0026)
+
+### API Endpoints Added (Scarlett & Emma)
+- `/api/graph/status` — graph stats (nodes, edges count)
+- `/api/graph/nodes` — all node listing
+- `/api/graph/explain?x=node_id` — plain-language node explanation
+- `/api/graph/query?q=...` — BFS graph traversal for questions
+- `/api/graph/path?a=...&b=...` — shortest connection path between nodes
+
+### Zero-Downtime Install
+- Scarlett: `systemctl restart scarlett-api` (~300ms), chat remained responsive throughout
+- Graphify runs in isolated Python venv (`/opt/graphify-venv/`), no impact on Node API
+- Both pushed to git (Scarlett: commit `72dbccb`)
+
+### Lola's Graph Location
+- Server: `/opt/graphify-data/lola/graphify-out/graph.json` (on 212.227.93.74)
+- Venv: `/opt/lola-graphify/`
+- Covers: identity, memory system, heartbeat protocol, WAL protocol, self-improvement loop, active projects (Scarlett, Emma, IONOS)
+
 ## 🧠 Auto-Save Mode (Added 2026-07-02)
 Maya wants me to proactively ask "should I remember this?" when important things come up in conversation — client details, passwords, decisions, preferences. If she says yes or doesn't reply, save it. Don't wait for her to remember to tell me.
 
