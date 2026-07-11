@@ -1,0 +1,16 @@
+# OpenClaw config for Scarlett VPS
+gateway:
+  host: 0.0.0.0
+  port: 18791
+  webhookToken: "scarlett-webhook-2026"
+  apiKeys:
+    - "scarlett-gw-key-2026"
+
+plugins:
+  entries:
+    ollama:
+      entry: ollama:chat:llama3.2
+      config:
+        baseUrl: "http://127.0.0.1:11434"
+        model: "llama3.2"
+        contextWindow: 8192

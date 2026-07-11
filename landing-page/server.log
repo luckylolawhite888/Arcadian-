@@ -1,0 +1,4 @@
+Landing page server running on http://0.0.0.0:3000
+Accessible at: http://212.227.93.74:3000
+Domain should point to: thenewworldorder.io
+Signups will be saved to: /home/node/.openclaw/workspace/landing-page/new-sign-ups

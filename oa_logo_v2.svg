@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff6b35"/>
+      <stop offset="50%" stop-color="#e74c3c"/>
+      <stop offset="100%" stop-color="#c0392b"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="80" fill="url(#g)"/>
+
+  <!-- O — thick and chunky -->
+  <text x="115" y="260" text-anchor="middle" font-family="'DM Sans','Arial Black',Arial,sans-serif" font-weight="900" font-size="200" fill="#fff">O</text>
+
+  <!-- Inline ampersand — smaller, nestled between -->
+  <text x="200" y="225" text-anchor="middle" font-family="'Playfair Display','Times New Roman',serif" font-weight="700" font-size="90" fill="rgba(255,255,255,0.92)" font-style="italic">&amp;</text>
+
+  <!-- A — slightly heavier stroke to balance the O -->
+  <text x="288" y="260" text-anchor="middle" font-family="'DM Sans','Arial Black',Arial,sans-serif" font-weight="900" font-size="210" fill="#fff">A</text>
+</svg>

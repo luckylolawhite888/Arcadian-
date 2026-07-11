@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>GPM Platform — Proposal</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#050505;--fg:#f0f0f0;--accent:#f57c00;--card:#0a0a0a;--border:#1a1a1a;--dim:#555;--muted:#999}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,sans-serif;background:var(--bg);color:var(--fg);height:100dvh;overflow:hidden;display:flex;flex-direction:column}
+.hdr{display:flex;align-items:center;padding:10px 16px;border-bottom:1px solid var(--border)}
+.lg{font-size:.8rem;font-weight:700}
+.lg span{color:var(--accent)}
+.lg .sub{font-size:.55rem;color:var(--dim);font-weight:400;display:block}
+.sa{flex:1;position:relative;width:100%;overflow:hidden}
+.sl{display:none;padding:20px 16px 30px;overflow-y:auto;-webkit-overflow-scrolling:touch;position:absolute;inset:0;align-items:flex-start}
+.sl.on{display:flex;flex-direction:column;animation:fadeIn .35s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:translateX(0)}}
+.pw{width:100%;max-width:100%}
+.pw h1{font-size:1.6rem;font-weight:900;letter-spacing:-1px;line-height:1.15;margin-bottom:8px}
+.pw h1 span{color:var(--accent)}
+.pw h2{font-size:1.1rem;font-weight:700;margin-bottom:12px}
+.pw p{font-size:.82rem;line-height:1.6;color:var(--muted);margin-bottom:10px}
+.pw p.ld{font-size:.9rem;line-height:1.7}
+.pw p strong{color:var(--fg)}
+.tg{display:inline-block;padding:2px 8px;border-radius:4px;font-size:.6rem;font-weight:600;margin-bottom:3px}
+.tgf{background:rgba(76,175,80,0.15);color:#4caf50;border:1px solid rgba(76,175,80,0.3)}
+.tgp{background:rgba(245,124,0,0.12);color:var(--accent);border:1px solid rgba(245,124,0,0.25)}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin:10px 0}
+.ct{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:12px;margin-bottom:8px}
+.ct h4{font-size:.78rem;font-weight:600;margin-bottom:3px}
+.ct p{font-size:.72rem;color:var(--muted);line-height:1.5;margin:0}
+.ct .b{font-size:1.2rem;font-weight:800;color:var(--accent);margin-bottom:2px}
+.ct .bg{color:#4caf50}
+.kv{display:flex;justify-content:space-between;padding:4px 0;font-size:.75rem;border-bottom:1px solid #111}
+.kv:last-child{border:none}
+.kv .k{color:var(--dim)}
+.kv .v{color:var(--accent);font-weight:600}
+.ft{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px;border-left:3px solid var(--accent);margin-bottom:6px}
+.ft h4{font-size:.78rem;font-weight:600;margin-bottom:2px}
+.ft .e{font-size:.65rem;color:var(--accent);margin-top:3px;font-weight:500}
+.br{background:linear-gradient(135deg,#1a0a00,var(--card));border:1px solid #333;border-radius:10px;padding:16px;text-align:center;margin:12px 0}
+.br .b{font-size:1.3rem;font-weight:900;color:var(--accent)}
+.mt{text-align:center;padding:10px;background:var(--card);border:1px solid var(--border);border-radius:6px}
+.mt .v{font-size:1.2rem;font-weight:800;color:var(--accent)}
+.mt .l{font-size:.62rem;color:var(--dim);margin-top:2px}
+.bl{margin:5px 0;padding-left:16px;position:relative;font-size:.78rem;line-height:1.4;color:var(--muted)}
+.bl::before{content:"";position:absolute;left:4px;top:6px;width:3px;height:3px;border-radius:50%;background:var(--accent)}
+.bl strong{color:var(--fg)}
+.btm{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;border-top:1px solid var(--border);gap:10px;flex-shrink:0}
+.btm button{padding:8px 20px;border:1px solid var(--border);border-radius:8px;background:var(--card);color:var(--fg);cursor:pointer;font-size:.78rem;font-weight:500;font-family:inherit}
+.btm button.p{background:var(--accent);border-color:var(--accent);color:#fff}
+.btm .pgc{color:var(--dim);font-size:.7rem}
+.prg{height:2px;background:var(--border)}
+.prg .bar{height:100%;background:var(--accent);transition:width .35s ease}
+@media(min-width:768px){.sl{padding:32px 40px 40px}.pw{max-width:720px;margin:0 auto}.pw h1{font-size:2.2rem}.g2{gap:14px}.g3{gap:12px}}
+</style>
+</head>
+<body>
+<div class="hdr">
+  <div class="lg">🌿 Green Planet Makers <span class="sub">Proposal</span></div>
+</div>
+<div class="sa">
+<div class="prg"><div class="bar" id="pb" style="width:7.69%"></div></div>
+
+<!-- 1: TITLE -->
+<div class="sl on" data-i="0">
+<div class="pw"><div style="margin-bottom:32px"><div style="font-size:1.2rem;color:var(--accent);font-weight:600">🌿</div></div>
+<h1>Carbon + Solar<br><span>Intelligence Platform</span></h1>
+<p class="ld" style="max-width:600px;font-size:1.05rem">A complete platform that turns any UK commercial postcode into a solar feasibility study + carbon credit valuation in under 3 seconds. Powered by live national infrastructure data.</p>
+<div style="margin-top:28px;display:flex;gap:12px;flex-wrap:wrap">
+<span class="tg tgf">National Grid ESO</span><span class="tg tgf">Open-Meteo</span><span class="tg tgf">Postcodes.io</span>
+<span class="tg tgf">UK BEIS</span><span class="tg tgp">PropertyData</span><span class="tg tgp">Monday.com</span>
+</div>
+<div style="margin-top:40px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;max-width:500px">
+<div class="mt"><div class="v">3s</div><div class="l">Postcode to full report</div></div>
+<div class="mt"><div class="v">14</div><div class="l">UK grid regions</div></div>
+<div class="mt"><div class="v">24/7</div><div class="l">Autonomous lead generation</div></div>
+</div>
+</div></div>
+
+<!-- 2: PROBLEM -->
+<div class="sl" data-i="1">
+<div class="pw">
+<h2>The Problem</h2>
+<p class="ld" style="max-width:620px">Commercial solar + carbon credit sales still rely on manual processes. This is costing you time, leads, and revenue.</p>
+<div class="g2" style="margin-top:20px">
+<div class="ct" style="border-left:3px solid #e53935"><h4>❌ Hours Per Quote</h4><p>Every commercial quote needs site survey, energy bills, solar calculations, payback modelling. It should take seconds, not hours.</p></div>
+<div class="ct" style="border-left:3px solid #e53935"><h4>❌ Leaving Carbon Money on the Table</h4><p>Every solar installation generates carbon credits. Most installers don't capture this recurring revenue stream.</p></div>
+<div class="ct" style="border-left:3px solid #e53935"><h4>❌ No Lead Automation</h4><p>Prospecting commercial properties requires manual research. There's no system finding viable roofs and reaching out automatically.</p></div>
+<div class="ct" style="border-left:3px solid #e53935"><h4>❌ Disconnected Tools</h4><p>Solar calculator, carbon data, Monday.com, reporting — all separate. No single view of a prospect or client.</p></div>
+</div>
+</div></div>
+
+<!-- 3: SOLUTION -->
+<div class="sl" data-i="2">
+<div class="pw">
+<h2>Our Solution</h2>
+<p class="ld" style="max-width:600px">One unified platform. Solar feasibility, carbon intelligence, credit portfolio management, ESG compliance, and autonomous lead generation — all in one dashboard.</p>
+<div class="g3" style="margin-top:20px">
+<div class="ft"><h4>☀️ Solar Checker</h4><p>Postcode + roof area → full commercial solar feasibility in 3 seconds. Size, cost, annual savings, payback.</p><div class="e">Live</div></div>
+<div class="ft"><h4>🌍 Live Carbon</h4><p>Real-time UK grid carbon intensity from National Grid ESO. 14 regions, generation mix, auto-refreshing.</p><div class="e">Live</div></div>
+<div class="ft"><h4>📊 Carbon Footprint</h4><p>Company carbon calculator using official UK BEIS factors. Scope 1/2/3 with offset recommendations.</p><div class="e">Live</div></div>
+<div class="ft"><h4>📁 Credit Portfolio</h4><p>Track available, sold, retired carbon credits. Client allocations, valuation by vintage, market pricing.</p><div class="e">Live</div></div>
+<div class="ft"><h4>📋 ESG Reports</h4><p>SECR-compliant report generator. Downloadable, filing-ready. Meets UK company requirements.</p><div class="e">Live</div></div>
+<div class="ft"><h4>🤖 Lead Bot</h4><p>Autonomous property crawler. Scans UK commercial properties, scores viability, feeds hot leads into your CRM or Monday.com — whichever you prefer.</p><div class="e">Available</div></div>
+</div>
+</div></div>
+
+<!-- 4: SOLAR ENGINE -->
+<div class="sl" data-i="3">
+<div class="pw">
+<h2>☀️ Solar Feasibility Engine</h2>
+<p class="ld" style="max-width:620px">One UK postcode → full commercial solar assessment. Live data from Open-Meteo's 365-day solar radiation archive. Results in 3 seconds.</p>
+<div class="g2" style="margin-top:16px">
+<div class="ct"><h4>Input</h4><div class="bl">UK postcode (any commercial property)</div><div class="bl">Roof area (200–5,000 m² presets)</div><div style="margin-top:10px;padding:8px;background:#111;border-radius:6px;font-size:.75rem;color:#666;font-family:monospace">Postcode: N14 6JT → Roof: 500m² → Analyse</div></div>
+<div class="ct"><h4>Output (London 500m² Example)</h4>
+<div class="kv"><span class="k">System Size</span><span class="v">82 kWp</span></div>
+<div class="kv"><span class="k">Panel Count</span><span class="v">164 panels</span></div>
+<div class="kv"><span class="k">Annual Generation</span><span class="v" style="color:#4caf50">141,000 kWh</span></div>
+<div class="kv"><span class="k">Annual Savings</span><span class="v" style="color:#4caf50">£35,334</span></div>
+<div class="kv"><span class="k">Payback Period</span><span class="v" style="color:#4caf50">~2 years</span></div>
+<div class="kv"><span class="k">CO₂ Avoided</span><span class="v">28.3 tonnes/yr</span></div>
+<div class="kv"><span class="k">Carbon Credit Value</span><span class="v">£1,131/yr</span></div>
+</div></div>
+<div class="g3" style="margin-top:10px">
+<div class="mt"><div class="v">82 kWp</div><div class="l">London 500m² roof</div></div>
+<div class="mt"><div class="v">247 kWp</div><div class="l">Birmingham 1,500m²</div></div>
+<div class="mt"><div class="v">494 kWp</div><div class="l">Glasgow 3,000m²</div></div>
+</div>
+</div></div>
+
+<!-- 5: CARBON CREDITS -->
+<div class="sl" data-i="4">
+<div class="pw">
+<h2>💰 Carbon Credit Revenue Engine</h2>
+<p class="ld" style="max-width:620px">Every solar installation generates a second, recurring income stream. Solar is the hook — carbon credits are the annuity that keeps paying for 25+ years.</p>
+<div class="g2" style="margin-top:16px">
+<div class="ct"><h4>📁 Credit Portfolio Dashboard</h4>
+<div class="kv"><span class="k">Available Credits</span><span class="v" style="color:#4caf50">8,750 tonnes</span></div>
+<div class="kv"><span class="k">Sold to Clients</span><span class="v">3,200 tonnes</span></div>
+<div class="kv"><span class="k">Retired/Claimed</span><span class="v" style="color:#e53935">550 tonnes</span></div>
+<div class="kv"><span class="k">Portfolio Value</span><span class="v">£128,000</span></div>
+<div class="kv"><span class="k">Market Price</span><span class="v">£40/tonne (UK VCM)</span></div>
+</div>
+<div class="ct"><h4>🌿 The Credit Lifecycle</h4>
+<div class="bl"><strong>Solar installed</strong> → avoids CO₂ every year</div>
+<div class="bl"><strong>CO₂ avoided</strong> → verified as carbon credits</div>
+<div class="bl"><strong>Credits sold</strong> to clients needing ESG offsets</div>
+<div class="bl"><strong>Recurring revenue</strong> — 25+ year income stream</div>
+<div class="bl"><strong>Dual pitch:</strong> "Solar pays for itself AND generates credits"</div>
+</div></div>
+<div class="g3">
+<div class="mt"><div class="v">28 t/yr</div><div class="l">London 500m² roof</div></div>
+<div class="mt"><div class="v">81 t/yr</div><div class="l">Birmingham 1,500m²</div></div>
+<div class="mt"><div class="v">179 t/yr</div><div class="l">Glasgow 3,000m²</div></div>
+</div>
+<p style="font-size:.78rem;color:var(--dim)">A single 500m² installation generates <strong style="color:var(--accent)">£1,131/yr</strong> in carbon credit value. Over 25 years that's <strong style="color:var(--accent)">£28,275</strong> per installation — on top of the solar savings.</p>
+</div></div>
+
+<!-- 6: LIVE CARBON -->
+<div class="sl" data-i="5">
+<div class="pw">
+<h2>🌍 Live UK Carbon Intelligence</h2>
+<p class="ld" style="max-width:600px">Real-time UK grid data from National Grid ESO. Updated every 30 minutes. Free, no key required.</p>
+<div class="g3" style="margin-top:18px">
+<div class="ct"><div class="b" style="font-size:1.8rem">156</div><p>Current gCO₂/kWh</p><p style="font-size:.7rem;color:var(--dim)">Index: Moderate</p></div>
+<div class="ct"><div class="b bg" style="font-size:1.8rem">35.1%</div><p>Renewable Generation</p></div>
+<div class="ct"><div class="b" style="font-size:1.8rem">14</div><p>UK Grid Regions</p></div>
+</div>
+<div class="ct"><h4>Generation Mix (Live)</h4><div style="display:flex;gap:8px;margin-top:6px;flex-wrap:wrap">
+<div style="flex:1;min-width:60px"><div style="height:50px;background:#4caf50;border-radius:4px;width:25%"></div><div style="font-size:.7rem;color:var(--dim)">Wind 24.8%</div></div>
+<div style="flex:1;min-width:60px"><div style="height:50px;background:#e53935;border-radius:4px;width:10%"></div><div style="font-size:.7rem;color:var(--dim)">Nuclear 9.9%</div></div>
+<div style="flex:1;min-width:60px"><div style="height:50px;background:#ff5722;border-radius:4px;width:36%"></div><div style="font-size:.7rem;color:var(--dim)">Gas 36.3%</div></div>
+<div style="flex:1;min-width:60px"><div style="height:50px;background:#9c27b0;border-radius:4px;width:10%"></div><div style="font-size:.7rem;color:var(--dim)">Biomass 10.3%</div></div>
+<div style="flex:1;min-width:60px"><div style="height:50px;background:#607d8b;border-radius:4px;width:19%"></div><div style="font-size:.7rem;color:var(--dim)">Imports 18.7%</div></div>
+</div></div>
+</div></div>
+
+<!-- 7: ESG -->
+<div class="sl" data-i="6">
+<div class="pw">
+<h2>📊 Carbon Footprint + ESG Compliance</h2>
+<p class="ld">Two tools that turn your clients' energy data into compliance-ready reports using official UK BEIS factors. Key selling point for any commercial prospect.</p>
+<div class="g2">
+<div class="ct"><h4>📊 Footprint Calculator</h4>
+<div class="bl"><strong>Inputs:</strong> kWh (electricity + gas), fleet mileage, vehicle types</div>
+<div class="bl"><strong>Outputs:</strong> Scope 1/2/3 emissions → total tCO₂e → offset cost</div>
+<div class="ct" style="margin-top:10px;background:#0d0d0d"><div class="kv"><span class="k">500k kWh elec + 200k kWh gas</span><span class="v" style="color:#4caf50">144.1 tCO₂e</span></div><div class="kv"><span class="k">Offset cost at £40/tonne</span><span class="v">£5,760/yr</span></div></div>
+</div>
+<div class="ct"><h4>📋 ESG / SECR Report Generator</h4>
+<div class="bl">Full SECR-compliant format</div>
+<div class="bl">Year-on-year comparison</div>
+<div class="bl">Carbon intensity ratio</div>
+<div class="bl">Downloadable HTML — filing ready</div>
+<div class="bl">Meets UK company reporting requirements</div>
+<div class="ct" style="margin-top:10px;background:#0d0d0d;border-left:3px solid var(--accent)"><p style="font-size:.78rem">Every commercial prospect needs ESG data. This gives them one — and positions your carbon credits as the solution.</p></div>
+</div></div>
+</div></div>
+</div></div>
+
+<!-- 8: PLATFORM TOOLS OVERVIEW -->
+<div class="sl" data-i="7">
+<div class="pw">
+<h2>🛠️ Every Tool in the Platform</h2>
+<p class="ld" style="max-width:620px">The platform isn't just one tool — it's a complete solar + carbon operating system.</p>
+<div class="g2" style="margin-top:12px">
+<div class="ct"><h4>☀️ Solar Checker</h4><p>UK postcode → full solar report in 3 seconds. System size, savings, payback, CO₂ avoided, carbon credit value.</p></div>
+<div class="ct"><h4>🌍 Live Carbon</h4><p>Real-time UK grid carbon intensity from NESO. 14 regions, auto-refresh. Proves the grid needs solar.</p></div>
+<div class="ct"><h4>📊 Carbon Footprint</h4><p>Company carbon calculator using UK BEIS factors. Scope 1/2/3, offset cost, total tCO₂e.</p></div>
+<div class="ct"><h4>📁 Credit Portfolio</h4><p>Full credit lifecycle — available, sold, retired. Per-client allocation, market valuation.</p></div>
+<div class="ct"><h4>📋 ESG Reports</h4><p>SECR-compliant reports ready for Companies House filing. Downloadable HTML.</p></div>
+<div class="ct"><h4>🤖 Lead Bot</h4><p>24/7 property scanning → solar analysis → AI scoring → CRM pipeline. Details on next slide.</p></div>
+</div>
+<div class="br"><div class="b">Everything in One Dashboard</div><p>No switching between spreadsheets and CRM tabs. One login, every tool.</p></div>
+</div></div>
+
+<!-- 9: LEAD BOT WORKFLOW -->
+<div class="sl" data-i="8">
+<div class="pw">
+<h2>🤖 How the Lead Bot Works</h2>
+<p class="ld" style="max-width:620px">Fully autonomous AI system running 24/7 — finding, analysing, scoring, and delivering leads.</p>
+<div class="g2" style="margin-top:12px">
+<div class="ct"><h4>1. 🔍 Property Discovery</h4><p>Scans UK commercial properties — warehouses, factories, offices. Captures company, address, roof area.</p></div>
+<div class="ct"><h4>2. ⚡ Solar + Carbon Analysis</h4><p>Every property runs through the full engine. System size, savings, CO₂ value in 3 seconds.</p></div>
+<div class="ct"><h4>3. 📊 Smart Scoring</h4><p>Configurable rules: roof >500m², payback <5 years = hot lead. Learns from closing patterns.</p></div>
+<div class="ct"><h4>4. 📬 Automated Outreach</h4><p>Lead pushed to Monday.com or CRM. AI drafts email. Optional auto-send with reply tracking.</p></div>
+<div class="ct"><h4>5. ✅ Track & Close</h4><p>Pipeline tracking from contact to deal. Telegram alerts per lead. Monthly revenue report.</p></div>
+</div>
+<div class="br"><div class="b">40-60 properties per run · 8-12 hot leads/week</div><p>Property discovery → Solar analysis → Carbon valuation → Smart scoring → Email outreach → CRM pipeline → Deal tracking.</p></div>
+</div></div><!-- 9: CARBON CREDITS DEEP DIVE -->
+<div class="sl" data-i="9">
+<div class="pw">
+<h2>🌿 Why Carbon Credits Matter</h2>
+<p class="ld" style="max-width:620px">Carbon credits aren't just an add-on — they're the reason this model works differently from every other solar platform.</p>
+<div class="g2" style="margin-top:16px">
+<div class="ct"><h4>What They Are</h4>
+<div class="bl">Each tonne of CO₂ your solar installations avoid = 1 carbon credit</div>
+<div class="bl">These credits are tradeable, verifiable, and in growing demand</div>
+<div class="bl">UK VCM market rate: <strong>~£40/tonne</strong></div>
+<div class="bl">Clients buy them to offset their own emissions (ESG compliance)</div>
+</div>
+<div class="ct"><h4>The Numbers</h4>
+<div class="bl">500m² commercial roof = <strong>28 tonnes CO₂ avoided/yr</strong></div>
+<div class="bl">= <strong>£1,131/yr</strong> in carbon credit revenue</div>
+<div class="bl">× 25 year lifespan = <strong>£28,275 total</strong></div>
+<div class="bl">That's on top of <strong>£35k/yr</strong> in energy savings</div>
+</div></div>
+<div class="br"><div class="b">Two Income Streams, One Installation</div><p>Your client saves £35k/yr on energy AND generates £1k+/yr in saleable carbon credits. The platform tracks and manages both.</p></div>
+<div class="ct" style="border-left:3px solid var(--accent);margin-top:8px"><h4>📈 Growing Market</h4><p style="font-size:.75rem">UK voluntary carbon market is expanding rapidly. Companies are legally required to report emissions (SECR) and increasingly choosing to offset. The demand for verified credits far exceeds supply.</p></div>
+</div></div>
+
+<!-- 10: TWO REVENUE MODEL -->
+<div class="sl" data-i="10">
+<div class="pw">
+<h2>💰 The Two-Revenue Model</h2>
+<p class="ld" style="max-width:620px">One conversation, two products. Solar (high-ticket installation) + Carbon credits (recurring margin).</p>
+<div class="g2" style="margin-top:20px">
+<div class="ct" style="border-left:3px solid #4caf50"><h4>☀️ Solar Installation</h4>
+<div class="bl"><strong>Product:</strong> Commercial solar PV + installation</div>
+<div class="bl"><strong>Average ticket:</strong> £50k–£200k</div>
+<div class="bl"><strong>Clients love it because:</strong> 2-4 year payback, AIA 100% tax write-off, 25+ year asset</div>
+</div>
+<div class="ct" style="border-left:3px solid var(--accent)"><h4>🌿 Carbon Credits</h4>
+<div class="bl"><strong>Product:</strong> Verified emission reduction credits</div>
+<div class="bl"><strong>Market rate:</strong> ~£40/tonne (UK VCM)</div>
+<div class="bl"><strong>Clients love it because:</strong> Fills ESG requirements, recurring annual purchase, no installation needed</div>
+</div></div>
+<div class="br"><div class="b">Two Products. One Pitch.</div><p>"Solar pays for itself in 2-4 years AND generates saleable carbon credits as a second income stream. We handle both."</p></div>
+</div></div>
+
+<!-- 11: PRICING - CLIENT FACING -->
+<div class="sl" data-i="11">
+<div class="pw">
+<h2>📋 Investment</h2>
+<p class="ld" style="max-width:600px">Simple, transparent pricing. A one-time setup gets the platform configured for your brand, then a low monthly retainer keeps everything running and improving.</p>
+
+<div class="g2" style="margin-top:20px">
+<div class="ct" style="border-left:3px solid var(--accent)"><h4>🚀 One-Time Platform Setup</h4>
+<div class="b" style="font-size:1.8rem">£2,000</div>
+<div class="bl">Full platform configuration with your branding</div>
+<div class="bl">CRM integration — works with Monday.com or dedicated CRM backend</div>
+<div class="bl">Lead bot setup configured for your area</div>
+<div class="bl">Carbon credit portfolio import and setup</div>
+<div class="bl">Staff training session (1 hour, remote)</div>
+<div class="bl">Typically deployed within <strong>1 week</strong></div>
+</div>
+<div class="ct" style="border-left:3px solid #4caf50"><h4>📦 Monthly Platform Access</h4>
+<div class="b" style="font-size:1.8rem">£199/mo</div>
+<div class="bl">Full access — all dashboard features</div>
+<div class="bl">Unlimited solar feasibility checks</div>
+<div class="bl">Carbon credit portfolio management</div>
+<div class="bl">ESG/SECR report generation</div>
+<div class="bl">Live carbon intelligence (auto-refresh)</div>
+<div class="bl">Lead bot — 24/7 automated property scanning</div>
+<div class="bl">Software updates and platform improvements</div>
+<div class="bl">Priority email support</div>
+</div>
+</div>
+
+<div class="br" style="margin-top:12px"><div class="b">Performance Partnership — 10%</div><p style="font-size:.82rem">We take 10% of the additional revenue our platform generates for your business — including solar installations and carbon credit sales. Our success is directly tied to yours.</p></div>
+
+<div class="g3" style="margin-top:12px">
+<div class="mt"><div class="v">£2,000</div><div class="l">One-time setup</div></div>
+<div class="mt"><div class="v">£199/mo</div><div class="l">Platform access</div></div>
+<div class="mt"><div class="v">10%</div><div class="l">Share of new revenue</div></div>
+</div>
+
+<p style="font-size:.72rem;color:var(--dim);text-align:center;margin-top:12px">The 10% applies only to revenue generated through the platform — solar installations closed via the lead bot or carbon credits sold through the portfolio dashboard. No hidden fees, no long-term contract.</p>
+</div></div>
+
+<!-- 12: CLOSING -->
+<div class="sl" data-i="12">
+<div class="pw"><div style="margin-bottom:24px"><div style="font-size:1.2rem;color:var(--accent);font-weight:600">🌿</div></div>
+<h1>Ready to <span>Get Started</span></h1>
+<p class="ld" style="max-width:550px;font-size:1.05rem">The platform is live, proven, and ready for your brand. Full deployment including lead bot and CRM integration (Monday.com or dedicated) within one week of setup.</p>
+<div class="g2" style="margin-top:24px">
+<div class="ct" style="border-left:3px solid var(--accent)"><div class="b" style="font-size:1.2rem">✅ Live Today</div>
+<div class="bl">☀️ Solar feasibility (postcode → report in 3s)</div>
+<div class="bl">🌍 Live UK carbon intelligence (NESO real-time)</div>
+<div class="bl">📊 Carbon footprint calculator</div>
+<div class="bl">📁 Credit portfolio dashboard</div>
+<div class="bl">📋 ESG report generator</div>
+</div>
+<div class="ct" style="border-left:3px solid #4caf50"><div class="b bg" style="font-size:1.2rem;color:#4caf50">🚀 Included in Setup</div>
+<div class="bl">🤖 Lead bot — 24/7 autonomous property scanning</div>
+<div class="bl">🔗 CRM integration — Monday.com or dedicated backend (your choice)</div>
+<div class="bl">📄 PDF report export for client presentations</div>
+<div class="bl">🎨 Your branding and colours</div>
+<div class="bl">📈 Ongoing platform improvements</div>
+</div></div>
+<div class="br"><div class="b">Want to see it in action?</div><p style="font-size:.82rem">Visit the live demo below. Enter any UK commercial postcode to see a real solar + carbon feasibility report generated in seconds.</p></div>
+<div style="text-align:center;margin-top:12px">
+<div style="font-size:.9rem;color:var(--accent);font-weight:700;font-family:monospace">carbon.thenewworldorder.io</div>
+<p style="font-size:.7rem;color:var(--dim);margin-top:4px">Demo available now — no password required</p>
+</div>
+</div></div>
+</div>
+
+<div class="btm">
+<button onclick="n(-1)">← Prev</button>
+<span class="pgc" id="pgc">1 / 12</span>
+<button class="p" onclick="n(1)">Next →</button>
+</div>
+
+<script>
+let ci = 0;
+const sl = document.querySelectorAll('.sl');
+document.getElementById('pb').style.width = (100/sl.length)+'%';
+function n(d) {
+  sl[ci].classList.remove('on');
+  ci = Math.max(0, Math.min(sl.length-1, ci + d));
+  sl[ci].classList.add('on');
+  document.getElementById('pgc').textContent = (ci+1) + ' / ' + sl.length;
+  document.getElementById('pb').style.width = ((ci+1)/sl.length*100)+'%';
+}
+document.addEventListener('keydown', function(e) {
+  if(e.key === 'ArrowRight' || e.key === 'ArrowDown') n(1);
+  if(e.key === 'ArrowLeft' || e.key === 'ArrowUp') n(-1);
+});
+const sa = document.querySelector('.sa') || document.body;
+let sx=0,sy=0;
+sa.addEventListener('touchstart',e=>{sx=e.changedTouches[0].screenX;sy=e.changedTouches[0].screenY;},{passive:true});
+sa.addEventListener('touchend',e=>{const dx=e.changedTouches[0].screenX-sx;const dy=e.changedTouches[0].screenY-sy;if(Math.abs(dx)>Math.abs(dy)&&Math.abs(dx)>30){n(dx<0?1:-1)}},{passive:true});
+</script>
+</body>
+</html>

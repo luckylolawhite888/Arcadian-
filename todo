@@ -1,0 +1,29 @@
+#!/bin/bash
+# Todo management script for Maya
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+case "$1" in
+    "list"|"ls"|"")
+        python3 "$SCRIPT_DIR/mark_done.py"
+        ;;
+    "done"|"complete"|"mark")
+        if [ -z "$2" ]; then
+            echo "Usage: todo done <number>"
+            echo "Example: todo done 1"
+            python3 "$SCRIPT_DIR/mark_done.py"
+        else
+            python3 "$SCRIPT_DIR/mark_done.py" "$2"
+        fi
+        ;;
+    "help"|"-h"|"--help")
+        echo "Todo Management Commands:"
+        echo "  todo list          - Show all todo items"
+        echo "  todo done <number> - Mark item as done"
+        echo "  todo help          - Show this help"
+        ;;
+    *)
+        echo "Unknown command: $1"
+        echo "Use: todo help"
+        ;;
+esac

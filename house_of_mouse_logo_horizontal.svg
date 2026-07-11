@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 60" width="400" height="60">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e74c3c"/>
+      <stop offset="100%" stop-color="#c0392b"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="4" y="10" width="40" height="40" rx="10" ry="10" fill="url(#g)"/>
+  <ellipse cx="24" cy="34" rx="8.5" ry="10" fill="#f2ede6"/>
+  <ellipse cx="17" cy="25" rx="4.5" ry="5.5" fill="#f2ede6" transform="rotate(-18, 17, 25)"/>
+  <ellipse cx="31" cy="25" rx="4.5" ry="5.5" fill="#f2ede6" transform="rotate(18, 31, 25)"/>
+
+  <text x="56" y="28" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="700" fill="#f2ede6" letter-spacing="0.5">
+    <tspan fill="#c0392b">H</tspan>ouse of <tspan fill="#c0392b">M</tspan>ouse
+  </text>
+  <line x1="260" y1="18" x2="260" y2="44" stroke="#333" stroke-width="1.5"/>
+  <text x="276" y="37" font-family="system-ui, -apple-system, sans-serif" font-size="10" letter-spacing="2.5" fill="#7a7369">AI BUSINESS SYSTEMS</text>
+</svg>

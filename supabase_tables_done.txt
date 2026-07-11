@@ -1,0 +1,30 @@
+Nexus CRM - Supabase Tables Created
+======================================
+Date: 2026-06-03 13:01 UTC
+Project: mdleurcenwmmenvkwjhl (Out & About)
+
+Tables Created (13 total):
+1. users - Syncs with Supabase Auth (id references auth.users)
+2. contacts - Contacts/Leads management
+3. deals - CRM deals/pipeline management (existing Out & About deals table renamed to oa_deals)
+4. tasks - Task management with priority, category, recurrence
+5. invoices - Invoice management
+6. automations - Automation rules with trigger/action
+7. notes - Notes with tags and star functionality
+8. templates - Email/message templates
+9. activity - Contact activity log
+10. events - Calendar events
+11. files - File storage metadata
+12. maps - Mind map nodes (JSONB)
+13. webhooks - Webhook event log
+
+Security:
+- Row Level Security (RLS) enabled on ALL tables
+- 50 RLS policies total (4 per table × 12 data tables + 2 for users table)
+- Every policy restricts access to user_id = auth.uid()
+- Policies cover SELECT, INSERT, UPDATE, DELETE operations
+
+Notes:
+- The pre-existing 'deals' table from Out & About was renamed to 'oa_deals' to free the name for CRM use
+- All tables use gen_random_uuid() for primary key generation
+- Timestamps are timestamptz with DEFAULT now()

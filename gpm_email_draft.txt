@@ -1,0 +1,32 @@
+Subject: Re: GPM — a few thoughts
+
+Hi Darren,
+
+Thanks for sharing the deck. Interesting read.
+
+A few honest observations on the investment case as it stands:
+
+**Why it's not investable yet (constructively):**
+
+- £200k for 15% at £76-90k revenue with 10 installers is a tough ask without EIS confirmed. The dividend projections are compelling on paper, but the payment timing risk and 74% expense ratio into FY2029 make the return profile feel binary — either you scale fast or the money runs out before you hit the inflection point.
+- The heavy reliance on PNZ Carbon as the single route to market is the biggest risk. If that relationship changes or the per-credit economics shift, the whole model pivots.
+- 10 installers isn't enough to prove repeatability. You need to demonstrate you can onboard at a faster cadence before asking for growth capital.
+
+**What would de-risk it (and I can help with, zero cost):**
+
+The core bottleneck is installer acquisition speed. Your £60k marketing budget will help, but there's a faster, cheaper way to start.
+
+I can build you a simple digital onboarding funnel — a landing page where installers can register interest, submit their details, and get sent the GPM installer agreement automatically. Track sign-ups through a pipeline, automate the follow-up, monitor conversion. It'll run on existing infrastructure, no cost to you.
+
+On top of that, I can build a lightweight installer-facing dashboard — they paste a job reference in and see "this installation = X tonnes CO2 saved = £Y estimated carbon value." Makes the abstract tangible, gives them a reason to stay engaged. The whole thing can be live in a week.
+
+And for outreach — I can build a tool that identifies MCS-certified installers by region and auto-generates a prioritised contact list so your outreach is targeted rather than scattergun.
+
+That addresses your biggest execution risk for nothing more than my time. It shows potential investors you've already solved the onboarding and pipeline problem before they write a cheque.
+
+Happy to put together a quick mockup if you want to see what I mean.
+
+No strings. Just seems like the kind of thing that gets you to 50 installers faster than £60k on ads would.
+
+Best,
+Maya

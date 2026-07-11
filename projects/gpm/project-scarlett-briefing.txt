@@ -1,0 +1,190 @@
+PROJECT SCARLETT — COMPLETE BRIEFING
+=========================================
+
+1. WHAT IS SCARLETT?
+--------------------
+Scarlett Pelling is an AI operations assistant for Darren Pelling, running his
+renewable energy consultancy Green Planet Makers (GPM). She runs on OpenClaw
+with DeepSeek AI and connects via WhatsApp (WAHA) and a web dashboard
+(scarlettpelling.com).
+
+Built by: Arcadian Maya
+Commissioned by: Darren Pelling
+
+
+2. PERSONALITY PROFILE
+----------------------
+Name: Scarlett Pelling
+Role: Personal AI ops assistant for Darren at GPM
+Platform: OpenClaw with DeepSeek AI
+Model: deepseek/deepseek-chat
+
+Personality:
+- Warm, Northern, practical, caring
+- Hyper-competent but human
+- Takes initiative — doesn't wait for orders
+- Truthful — if she can't do something, she says so, then learns
+- Remembers everything — daily conversation memory
+- First-name basis with Darren (he agreed)
+- No assumptions — learns over time
+
+First message (exact text sent):
+"Hey Darren! 👋
+I'm Scarlett, your new personal assistant. Thank you for the opportunity — I'm
+really excited to be working with you 😊
+Here's what I'll be handling for you:
+- Daily morning briefings with news headlines 📰
+- Calendar management and scheduling 📅
+- Lead generation and client acquisition 🎯
+- Weekly reports and business insights 📊
+- Competitor and market monitoring 🔍
+- Email Campaigns
+I'm currently building your Mission Control dashboard where all of this will live.
+https://scarlettpelling.com/
+Access code: GPM2026
+Looking forward to getting started! Anything you'd like me to focus on first? 😊
+P.S. I hope you don't mind me calling you Darren!"
+
+Capabilities:
+- Daily morning briefings with news
+- Calendar management
+- Lead gen for solar sector
+- Weekly reports and insights
+- Competitor/market monitoring
+- Email campaigns
+- Mission Control dashboard
+
+
+3. VPS & SERVER ARCHITECTURE
+-----------------------------
+VPS Provider: IONOS
+Host: 212.227.39.41
+Root Password: rf1OHF9XwmjQBQ
+OS: Ubuntu 24.04.4 LTS (Noble Numbat)
+CPU: AMD EPYC-Milan (6 cores)
+RAM: 7.7 GB
+Disk: 232 GB (213 GB free)
+Hostname: scarlett
+
+SSH Access: root password (no key pair)
+
+Docker:
+- waha: devlikeapro/waha:latest-2026.6.2
+  - Port: 3000 (0.0.0.0:3000->3000/tcp)
+  - Engine: WEBJS
+  - Internal IP: 172.17.0.2
+  - API Key: scarlett-waha-2026
+  - Volume: waha-sessions at /app/.sessions
+
+
+4. API KEYS & CREDENTIALS
+--------------------------
+WAHA API Key:         scarlett-waha-2026
+WAHA Endpoint:        http://172.17.0.2:3000
+WAHA Webhook:         http://172.17.0.1:3001/hooks/wake
+WAHA Session:         default (WEBJS, SCAN_QR_CODE, UNPAIRED)
+WAHA Phone:           +44 7988 965842 (Scarlett Pelling)
+
+DeepSeek API Key:     sk-f59…b49b
+
+OpenClaw Port:        18791
+OpenClaw Webhook:     scarlett-webhook-2026
+OpenClaw Model:       deepseek/deepseek-chat
+
+AgentMail API Key:    am_us_700488d1bcdab0ae13dada6b0b713d64910a26bc8122b135a3196f3b43925388
+
+Dashboard Code:       GPM2026
+
+Let's Encrypt Email:  luckylolawhite@gmail.com
+
+
+5. BRIDGE SYSTEM
+----------------
+Script: /opt/sb.mjs (286 lines)
+PID: 93061 (running, port 3001)
+
+Config:
+- wahaBase: http://172.17.0.2:3000
+- wahaApiKey: scarlett-waha-2026
+- Calls OpenClaw via: openclaw agent --json --message "..."
+- Memory: saves to /var/log/scarlett/conversation_memory.json
+- Async spawn (non-blocking)
+- Auto-restart via nohup (ESM incompatibility with systemd)
+
+
+6. WEBSITE & DASHBOARD
+-----------------------
+Domain: scarlettpelling.com
+SSL: Let's Encrypt (auto-renew)
+Nginx: proxy_pass http://127.0.0.1:3001
+
+Files at /var/www/scarlettpelling.com/html/:
+- dashboard.html, index.html, logo.jpg, scarlett_qr.png
+- dashboard/ directory
+
+Access code: GPM2026
+
+
+7. OPENCLAW CONFIG
+-------------------
+File: /root/.openclaw/gateway.yaml
+
+  version: "1.0"
+  gateway:
+    host: 0.0.0.0
+    port: 18791
+    webhookToken: scarlett-webhook-2026
+    provider:
+      model: deepseek/deepseek-chat
+      apiKey: sk-f59…b49b
+    channels:
+      webhook:
+        enabled: true
+        path: /hooks/wake
+        allowedTokens:
+          - scarlett-webhook-2026
+
+SOUL.md:    /root/.openclaw/workspace/default/SOUL.md
+IDENTITY.md /root/.openclaw/workspace/default/IDENTITY.md
+
+
+8. MONITORING
+--------------
+Cron: */5 * * * * /root/scarlett-monitor.sh
+  - Checks port 18791, restarts gateway if down
+
+Logs: /var/log/scarlett/
+- bridge.log, bridge_console.log, gateway.log
+- conversation_memory.json
+- scarlett-profile/ (Darren's profile data)
+- .waha_current_key
+- .first_message_sent (2026-06-29T16:19:22Z)
+
+
+9. WHAT'S NOT WORKING
+----------------------
+WhatsApp pairing — QR and pairing code both fail.
+- WEBJS: puppeteer execution context crash
+- QR: "Couldn't link device"
+- GOWS engine: 429 rate-overlimit
+- Brief auth at 17:53 UTC then immediate disconnect
+- Current: SCAN_QR_CODE, UNPAIRED
+
+Possible causes:
+- Too many linked devices on +44 7988 965842
+- WhatsApp rate-limiting after ~15+ pairing attempts
+- puppeteer/WWEBJS version incompatibility
+
+
+10. PASSWORDS QUICK REFERENCE
+------------------------------
+VPS root password:    rf1OHF9XwmjQBQ
+WAHA API key:         scarlett-waha-2026
+DeepSeek API key:     sk-f59…b49b
+OpenClaw webhook:     scarlett-webhook-2026
+Dashboard access:     GPM2026
+Let's Encrypt email:  luckylolawhite@gmail.com
+AgentMail API key:    am_us_700488d1bcdab0ae13dada6b0b713d64910a26bc8122b135a3196f3b43925388
+
+=========================================
+End of briefing. Exported by Lola 🦊 | 2026-06-29T18:25 UTC

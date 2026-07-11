@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 250" width="800" height="250">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff6b35"/>
+      <stop offset="50%" stop-color="#e74c3c"/>
+      <stop offset="100%" stop-color="#c0392b"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Icon -->
+  <rect x="0" y="0" width="250" height="250" rx="50" fill="url(#g)"/>
+  <text x="72" y="165" text-anchor="middle" font-family="'DM Sans','Arial Black',Arial,sans-serif" font-weight="900" font-size="128" fill="#fff">O</text>
+  <text x="125" y="142" text-anchor="middle" font-family="'Playfair Display','Times New Roman',serif" font-weight="700" font-size="55" fill="rgba(255,255,255,0.92)" font-style="italic">&amp;</text>
+  <text x="182" y="165" text-anchor="middle" font-family="'DM Sans','Arial Black',Arial,sans-serif" font-weight="900" font-size="134" fill="#fff">A</text>
+
+  <!-- Wordmark -->
+  <text x="285" y="110" font-family="'DM Sans','Arial Black',Arial,sans-serif" font-weight="900" font-size="52" fill="#1a1a1a">Out &amp;</text>
+  <text x="285" y="168" font-family="'DM Sans','Arial Black',Arial,sans-serif" font-weight="900" font-size="52" fill="#1a1a1a">About</text>
+  <text x="285" y="210" font-family="'DM Sans',Arial,sans-serif" font-weight="600" font-size="16" fill="#c0392b" letter-spacing="3">FREE LOCAL DEALS</text>
+</svg>
