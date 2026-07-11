@@ -719,7 +719,10 @@ When you have nothing to say, respond with ONLY: NO_REPLY
 - **Status:** 🔜 Server provisioned, needs setup
 
 ## 🔴 Emma (Tony) — Live 2026-07-08
-- **Client:** Tony → AI assistant Emma
+- **Client:** Tony (Liaqat Hussain) → AI assistant Emma
+- **Telegram username:** @GDEA_Solar
+- **Telegram user ID:** 7783035506
+- **Language:** English
 - **VPS:** 212.227.38.78, root password: 3v3fUeTROhIl4n
 - **Dashboard:** eco-emma.com (login: @TONY2026, branded GDEA)
 - **Stack:** Express API (port 3100, PM2), OpenClaw gateway, nginx, Supabase, SQLite, ElevenLabs voice

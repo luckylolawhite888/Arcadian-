@@ -39,4 +39,24 @@
 
 ---
 
-_Last updated: 2026-05-19 02:45 UTC — Pre-Kingsley meeting state_
+- [ ] 🔑 **Emma GitHub deploy key** — Add SSH deploy key (write access) to github.com/missecoemma-droid/emma-backup-
+  → Public key on VPS `/root/.ssh/github_emma.pub`:
+  `ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAzshAVItmK2KWhbTh1Xhl+QrpOPGhsySYU+m9fFXavx emma@eco-emma.com`
+  → Go to Repo Settings → Deploy Keys → Add → paste key → tick "Allow write access"
+
+- [ ] 🗄️ **Emma Supabase: create conversations table** for shared chat history (Telegram + dashboard)
+  ```sql
+  CREATE TABLE IF NOT EXISTS conversations (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    session_key TEXT NOT NULL,
+    role TEXT NOT NULL,
+    content TEXT NOT NULL,
+    created_at TIMESTAMPTZ DEFAULT NOW()
+  );
+  CREATE INDEX IF NOT EXISTS idx_conversations_session 
+    ON conversations(session_key, created_at);
+  ```
+  → Run in Supabase SQL Editor (psjlllkngrgwvmddwznj.supabase.co)
+  → Also check RLS — anon key needs insert/select on this table
+
+_Last updated: 2026-07-10 20:50 UTC_
