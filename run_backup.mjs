@@ -14,7 +14,9 @@ async function runBackup() {
     const timeout = setTimeout(() => reject(new Error('SSH_COMMAND_TIMEOUT')), 120000);
 
     conn.on('ready', () => {
-      conn.exec('bash /root/full_lola_backup.sh', (err, stream) => {
+      // The backup script redirects all output to a log file.
+      // After running, grep the latest log for the status line.
+      conn.exec("bash /root/full_lola_backup.sh 2>/dev/null; grep BACKUP_COMPLETE \"$(ls -t /root/backups/backup-*.log 2>/dev/null | head -1)\" 2>/dev/null || echo 'NO_MARKER_FOUND'", (err, stream) => {
         if (err) { clearTimeout(timeout); reject(err); return; }
 
         let stdout = '';
@@ -47,19 +49,18 @@ async function runBackup() {
 
 try {
   const result = await runBackup();
-  process.stdout.write(result.stdout);
   if (result.stderr) process.stderr.write(result.stderr);
 
   if (result.code === 0) {
-    const match = result.stdout.match(/BACKUP_COMPLETE:([^:]+):(.+)/);
+    const match = result.stdout.match(/BACKUP_COMPLETE:([^\n]+):([^\n]+)/);
     const file = match?.[1] || 'unknown';
     const size = match?.[2] || 'unknown';
-    console.log(`\n✅ Backup OK — ${file} (${size})`);
+    console.log(`✅ Backup OK — ${file} (${size})`);
   } else {
-    console.error(`\n❌ Backup FAILED (exit code ${result.code})`);
+    console.error(`❌ Backup FAILED (exit code ${result.code})`);
     process.exit(1);
   }
 } catch (err) {
-  console.error(`\n❌ Backup ERROR: ${err.message}`);
+  console.error(`❌ Backup ERROR: ${err.message}`);
   process.exit(1);
 }

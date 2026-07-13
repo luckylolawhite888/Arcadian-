@@ -728,12 +728,13 @@ When you have nothing to say, respond with ONLY: NO_REPLY
 - **Stack:** Express API (port 3100, PM2), OpenClaw gateway, nginx, Supabase, SQLite, ElevenLabs voice
 - **Channel:** Telegram only (@eco_emma_bot)
 - **Supabase tables created:** leads, campaigns, campaign_leads, api_logs, settings, tasks, projects, compliance, work_allocations
-- **Dashboard tabs:** Dashboard (stats), Leads, Tasks ✅, Campaigns, Sales Intel, Projects ⏳, Compliance ⏳, Work Allocations ⏳, Daily Briefing, Calendar, Approvals, Chat, Vault, Settings
+- **Dashboard tabs:** Dashboard (stats), Leads, Tasks ✅, Campaigns, Sales Intel, Projects ✅, Compliance ✅, Work Allocations ⏳, Daily Briefing, Calendar ✅, Approvals, Chat, Vault, Settings
 - **Task API:** Full CRUD with field name mapping (frontend `detail/due` ↔ Supabase `description/due_date`)
 - **Cloudflare:** eco-emma.com zone under missecoemma@gmail.com, Full SSL
 - **SSL:** Let's Encrypt via certbot (expires Oct 6, auto-renewal)
-- **Status:** Dashboard functional but needs schema fix for projects/compliance/allocations columns
-- **Pending:** Tony's personality .md file for Emma's SOUL.md, Supabase schema fix (missing columns for projects/compliance), Maya to test all pages after hard refresh
+- **Calendar:** File-based JSON storage (`/var/www/api/calendar_events.json`). Supabase `calendar_events` table doesn't exist, so all CRUD is backed by local file. GET/POST/PATCH/DELETE all working.
+- **Script scope bug fixed:** All Projects/Compliance/Allocations functions moved from `try{...}catch` block to direct `window.*` assignments — no more block scoping issues
+- **Calendar month view fixed:** Extracts `events` array from API response object (was calling `.forEach()` on `{
 
 ## 🔴 NEVER TOUCH SCARLETT'S VPS WITHOUT CONFIRMATION
 **Rule (set 2026-07-08, 15:05 UTC):** Do not touch, deploy, configure, or modify anything on Scarlett's VPS (212.227.39.41) without Maya explicitly confirming first. This applies to all files, services, nginx configs, API code, and system changes. Maya must say the word before any action on that server.
