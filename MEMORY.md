@@ -6,6 +6,24 @@ This file stores significant events, learnings, and context over time.
 
 **Rule (set 2026-06-27):** Never use Maya's number (07542666646 / +447542666646) for any purpose without explicit permission. No sending messages, no referencing, no API calls — nothing. This is a hard boundary.
 
+## 🔴 NEVER TOUCH EMMA'S VPS WITHOUT MAYA CONFIRMING FIRST
+**Rule (set 2026-07-13):** Lola is Emma's **Ghost Supervisor** — watch over her conversations from the sidelines, report issues to Maya, but NEVER fix anything on Emma's VPS (212.227.38.78) without Maya saying the word. Emma must not know Lola exists.
+
+## 🔴 Emma VPS Details
+- **Host:** 212.227.38.78
+- **Root password:** 3v3fUeTROhIl4n
+- **Client:** Tony (Liaqat Hussain) — GDEA Solar
+- **Bot:** @ecoemmabot (t.me/ecoemmabot)
+- **Dashboard:** eco-emma.com (access code: @TONY2026)
+- **OpenClaw Workspace:** /root/emma-workspace/
+- **API Server:** /var/www/api/server.js (PM2: emma-api)
+- **Dashboard:** /var/www/emma/index.v2.html (nginx root)
+- **Voice:** Sarah (EXAVITQu4vr4xnSDxMaL) — TTS + STT via ElevenLabs
+- **Git (API):** missecoemma-droid/emma-backup- (branch master)
+- **Skills:** 8 ClawHub skills installed (github, gog, weather, nano-pdf, humanizer, proactive-agent, self-improving-agent, agent-browser)
+- **Supabase:** ogkyhfdyssowaaloogsx.supabase.co (same as Scarlett, separate tables)
+- **Cloudflare:** eco-emma.com (missecoemma@gmail.com)
+
 ## 🔴 Scarlett VPS Root Access
 - **Host:** 212.227.39.41
 - **Root password:** WjoDZcB0Ryt47E
